@@ -52,6 +52,8 @@ jobs:
 
           chmod 600 private_key         
 
+          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl stop $SERVICE_NAME"
+          
           scp -o StrictHostKeyChecking=no -i private_key guestbook $SERVER_USER@$SERVER_HOST:$SERVER_PATH
 
-          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl restart $SERVICE_NAME"
+          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl start $SERVICE_NAME"
