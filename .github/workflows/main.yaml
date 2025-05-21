@@ -48,12 +48,12 @@ jobs:
           SERVER_PATH: ${{ secrets.SERVER_PATH }}
           SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
         run: >
-          echo "$SSH_PRIVATE_KEY" > private_key
+          #echo "$SSH_PRIVATE_KEY" > private_key
 
-          chmod 600 private_key         
+          #chmod 600 private_key         
 
-          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl stop $SERVICE_NAME"
+          ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $SERVER_USER@$SERVER_HOST "sudo systemctl stop $SERVICE_NAME"
           
-          scp -o StrictHostKeyChecking=no -i private_key guestbook $SERVER_USER@$SERVER_HOST:$SERVER_PATH
+          scp -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY guestbook $SERVER_USER@$SERVER_HOST:$SERVER_PATH
 
-          ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl start $SERVICE_NAME"
+          ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $SERVER_USER@$SERVER_HOST "sudo systemctl start $SERVICE_NAME"
