@@ -1,13 +1,13 @@
-# Guest Book
+## Guest Book
 
 Uma aplicação web simples de livro de visitas feita em Go, utilizando SQLite e templates HTML.
 
-## Pré-requisitos
+### Pré-requisitos
 
 - [Go](https://golang.org/dl/) 1.16 ou superior
 - [SQLite3](https://www.sqlite.org/download.html) (opcional, pois o Go criará o banco automaticamente)
 
-## Como rodar
+### Como rodar
 
 1. **Clone o repositório:**
 
@@ -41,23 +41,22 @@ Uma aplicação web simples de livro de visitas feita em Go, utilizando SQLite e
 
    Abra [http://localhost:8080](http://localhost:8080)
 
-## Estrutura do Projeto
+### Estrutura do Projeto
 
 - `main.go`: Código principal da aplicação.
 - `templates/`: Contém o template HTML (`index.html`).
 - `guestbook.db`: Banco de dados SQLite criado automaticamente.
 - `migrations/`: Scripts SQL para migração (opcional).
 
-## Funcionalidades
+### Funcionalidades
 
 - Envie mensagens pelo formulário na página principal.
 - As mensagens são salvas no banco de dados e exibidas em ordem decrescente de data.
 
-## Observações
+### Observações
 
 - O banco de dados é criado automaticamente no arquivo `guestbook.db` na primeira execução.
 - Para redefinir as mensagens, basta apagar o arquivo `guestbook.db`.
 
----
 
 Feito com Go e amor 💚
