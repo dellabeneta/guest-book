@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-900">
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Book</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-full flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full">
+        <h1 class="text-4xl font-bold text-center text-white mb-8">Guest Book do Michel</h1>
+        
+        <form method="POST" class="mb-8" id="messageForm">
+            <textarea 
+                name="message"
+                id="messageInput"
+                class="w-full p-4 bg-gray-800 text-white rounded-lg border border-gray-700 focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                rows="4"
+                placeholder="Escreva uma mensagem..."
+                required
+                onkeydown="handleKeyPress(event)"
+            ></textarea>
+            
+            <!-- Mensagem de instrução adicionada aqui -->
+            <div class="text-gray-400 text-sm mt-1">
+                Dica: Pressione Shift + Enter para quebrar linha
+            </div>
+
+            <button 
+                type="submit"
+                class="mt-4 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
+            >
+                Enviar
+            </button>
+        </form>
+
+        <div class="space-y-4">
+            {{ if . }}
+                {{ range . }}
+                <div class="p-4 bg-gray-800 rounded-lg">
+                    <p class="text-white text-lg">{{ .Content }}</p>
+                    <p class="text-gray-400 text-sm mt-1">{{ .CreatedAt.Format "02/01/2006 15:04" }}</p>
+                </div>
+                {{ end }}
+            {{ else }}
+                <p class="text-gray-400 text-center">Nenhuma mensagem ainda. Seja o primeiro!</p>
+            {{ end }}
+        </div>
+    </div>
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                document.getElementById('messageForm').submit();
+            }
+        }
+    </script>
+</body>
+</html>
