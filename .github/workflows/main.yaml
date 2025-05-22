@@ -21,7 +21,7 @@ jobs:
       - name: Verify dependencies
         run: go mod verify
       - name: Build
-        run: go build -v -o guestbook -ldflags="-s -w" ./
+        run: go build -v -o guestbook-prod -ldflags="-s -w" ./
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
