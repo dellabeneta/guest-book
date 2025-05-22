@@ -78,6 +78,8 @@ func main() {
         defer rows.Close()
 
         var messages []Message
+        loc, _ := time.LoadLocation("America/Sao_Paulo")
+
         for rows.Next() {
             var m Message
             err := rows.Scan(&m.Content, &m.CreatedAt)
@@ -85,6 +87,8 @@ func main() {
                 http.Error(w, err.Error(), http.StatusInternalServerError)
                 return
             }
+
+            m.CreatedAt = m.CreatedAt.In(loc) // 👈 converte de UTC para horário do Brasil
             messages = append(messages, m)
         }
 
