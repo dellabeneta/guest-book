@@ -15,6 +15,9 @@ import (
 //go:embed templates
 var embeddedTemplates embed.FS
 
+//go:embed static
+var staticFiles embed.FS
+
 type Message struct {
     Content   string
     CreatedAt time.Time
@@ -39,6 +42,17 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
+
+    // Servir favicon.ico diretamente
+    http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+        data, err := staticFiles.ReadFile("static/favicon.ico")
+        if err != nil {
+            http.NotFound(w, r)
+            return
+        }
+        w.Header().Set("Content-Type", "image/x-icon")
+        w.Write(data)
+    })
 
     // Configurar servidor
     http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
