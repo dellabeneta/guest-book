@@ -99,7 +99,7 @@ func main() {
         tmpl.Execute(w, messages)
     })
 
-    // Iniciar servidor
-    fmt.Println("Servidor rodando em http://localhost:8080")
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    // Iniciar servidor Staging
+    fmt.Println("Servidor rodando em http://localhost:8090")
+    log.Fatal(http.ListenAndServe(":8090", nil))
 }
