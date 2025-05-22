@@ -54,7 +54,7 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl stop $SERVICE_NAME_STAG"
           
-          scp -o StrictHostKeyChecking=no -i private_key guestbook-prod $SERVER_USER@$SERVER_HOST:$SERVER_PATH_STAG
+          scp -o StrictHostKeyChecking=no -i private_key guestbook-stag $SERVER_USER@$SERVER_HOST:$SERVER_PATH_STAG
 
           ssh -o StrictHostKeyChecking=no -i private_key $SERVER_USER@$SERVER_HOST "sudo systemctl start $SERVICE_NAME_STAG"
 
