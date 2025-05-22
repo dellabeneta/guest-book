@@ -45,8 +45,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_PATH: ${{ secrets.SERVER_PATH_PROD }}
-          SERVICE_NAME: ${{ secrets.SERVICE_NAME_PROD }}
+          SERVER_PATH_PROD: ${{ secrets.SERVER_PATH_PROD }}
+          SERVICE_NAME_PROD: ${{ secrets.SERVICE_NAME_PROD }}
         run: >
           echo "$SSH_PRIVATE_KEY" > private_key
 
