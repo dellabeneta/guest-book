@@ -2,6 +2,8 @@
 
 Uma aplicação web simples de livro de visitas feita em Go, utilizando SQLite e templates HTML.
 
+Ambiente de STaging e Produção, em branches separadas.
+
 ### Pré-requisitos
 
 - [Go](https://golang.org/dl/) 1.16 ou superior
