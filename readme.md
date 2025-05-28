@@ -2,7 +2,7 @@
 
 Uma aplicação web simples de livro de visitas feita em Go, utilizando SQLite e templates HTML.
 
-Ambiente de STaging e Produção, em branches separadas.
+Ambiente de Staging e Produção, em branches separadas.
 
 ### Pré-requisitos
 
